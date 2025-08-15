@@ -20,7 +20,7 @@ class ImageEditorApp(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
         self.iconbitmap("images/pixil-frame-0.ico") 
-        self.title("Image Editor")
+        self.title("Pymage Editor")
         self.geometry("1920x1080")
         self.configure(bg="#1f1f1f")
         self.resizable(True, True)
