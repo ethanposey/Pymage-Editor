@@ -1,6 +1,6 @@
 # Pymage-Editor (Pronounced pih-midge)
 
-A simple image editor made in Python using Tkinter and Pillow. This is a random project I was working on to give myself a somewhat useful tool and to get better at Python. There are much better image editors out there such as GIMP and there are much better languages to write image editors with. That said, I usually only need a few things and I hate looking up random tools like "image resizer" and sometimes I don't want to take the time to sift through GIMP to find a specific tool (no hate to GIMP) so here we are with Python.
+A simple image editor made in Python using Tkinter and Pillow. This is a random project I was working on to give myself a somewhat useful tool and to get better at Python. There are much better image editors out there such as GIMP and there are much better languages to write image editors with. That said, I usually only need a few things and I hate looking up random tools like "image resizer" and sometimes I don't want to take the time to sift through GIMP to find a specific tool (no hate to GIMP) so here we are with Python. :)
 
 ---
 
