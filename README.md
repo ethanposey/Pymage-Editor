@@ -17,7 +17,7 @@ A simple image editor made in Python using Tkinter and Pillow. This is a random 
 
 ### Features to add:
 - [ ] CLI version with argparse for quick headless image manipulation
-- [ ] Drawing feature?
+- [ ] Drawing feature
 - [ ] Cropping Feature
 - [ ] Mask feature (if its not a headache)
 
