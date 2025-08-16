@@ -1,4 +1,5 @@
 import os
+import numpy as np
 
 from PIL import Image, ImageFilter, ImageOps
 
@@ -144,3 +145,24 @@ def invert_image(img: Image.Image) -> Image.Image:
         Image.Image: Inverted image
     """
     return ImageOps.invert(img)
+
+def sepia_image(img: Image.Image) -> Image.Image:
+    """Applies a sepia filter to the image
+
+    Args:
+        img (Image.Image): Image to apply sepia to
+
+    Returns:
+        Image.Image: Sepiated image (idk if that's a real word)
+    """
+    img = img.convert("RGB")
+    img_array = np.array(img)
+
+    sepia_matrix = np.array([[0.393, 0.769, 0.189],
+                            [0.349, 0.686, 0.168],
+                            [0.272, 0.534, 0.131]])
+    
+    sepia_array = img_array @ sepia_matrix.T
+    sepia_array = np.clip(sepia_array, 0, 255).astype(np.uint8)
+
+    return Image.fromarray(sepia_array)
