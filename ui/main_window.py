@@ -1,6 +1,7 @@
 import os
 import tkinter as tk
 from tkinter import filedialog as fd
+from pathlib import Path
 
 from image_processing.operations import (
     apply_effect,
@@ -90,12 +91,19 @@ class ImageEditorApp(tk.Tk):
         )
         if not file_path:
             return
+        global path
+        path = Path(file_path)
         self.img = open_img(file_path)
         self.canvas.show(self.img, at=(100, 100))
         self.history.reset()
         self.history.push(f"Open: {os.path.basename(file_path)}", self.img)
 
     def _save_image(self):
+        if not self.img:
+            return
+        save_img(self.img, path)
+
+    def _save_image_as(self):
         if not self.img:
             return
         save_path = fd.asksaveasfilename(
@@ -106,9 +114,6 @@ class ImageEditorApp(tk.Tk):
         if save_path:
             save_img(self.img, save_path)
 
-    def _save_image_as(self):
-        # same as _save_image; keep both if you want different defaults later
-        self._save_image()
 
     # ---------- Edit actions ----------
     def _rotate_image(self):
@@ -146,7 +151,6 @@ class ImageEditorApp(tk.Tk):
     def _apply(self, effect_key: str, label: str):
         if not self.img:
             return
-        # make sure effect_key matches what your image_processing.operations expects
         self.img = apply_effect(self.img, effect_key)
         self.canvas.show(self.img)
         self.history.push(label, self.img)
