@@ -10,7 +10,8 @@ from image_processing.operations import (
     save_img,
     grayscale_image,
     flip_image,
-    mirror_image
+    mirror_image,
+    invert_image
 )
 
 from ui.widgets import TwoIntDialog, ImageCanvas, HistoryPanel
@@ -75,6 +76,7 @@ class ImageEditorApp(tk.Tk):
         filter_menu = tk.Menu(menubar, tearoff=0)
         menubar.add_cascade(label="Filters", menu=filter_menu)
         filter_menu.add_command(label="Grayscale", command=self._grayscale)
+        filter_menu.add_command(label="Invert", command=self._invert)
 
     # -------- File ops --------
     def _open_image(self):
@@ -151,6 +153,12 @@ class ImageEditorApp(tk.Tk):
             self.img = grayscale_image(self.img)
             self.canvas.show(self.img)
             self.history.push("Grayscale", self.img)
+
+    def _invert(self):
+        if self.img:
+            self.img = invert_image(self.img)
+            self.canvas.show(self.img)
+            self.history.push("Invert", self.img)
 
     # -------- History integration --------
     def _load_history_state(self, _desc: str, img_copy):

@@ -70,6 +70,15 @@ def resize_img(img: Image.Image, width: int, height: int) -> Image.Image:
 
 
 def apply_effect(img: Image.Image, effect: str) -> Image.Image | ValueError:
+    """Applies a given effect to an image.
+
+    Args:
+        img (Image.Image): Image to apply effect to
+        effect (str): Type of effect to apply to the image
+
+    Returns:
+        Image.Image | ValueError: Effected image
+    """
     if effect == "blur":
         return img.filter(ImageFilter.BLUR)
     elif effect == "contour":
@@ -91,12 +100,47 @@ def apply_effect(img: Image.Image, effect: str) -> Image.Image | ValueError:
 
 
 def flip_image(img: Image.Image) -> Image.Image:
+    """Flips an image from top to bottom
+
+    Args:
+        img (Image.Image): Image to be flipped
+
+    Returns:
+        Image.Image: Flipped image
+    """
     return img.transpose(Image.FLIP_TOP_BOTTOM)
 
 
 def mirror_image(img: Image.Image) -> Image.Image:
+    """Mirrors image from left to right
+
+    Args:
+        img (Image.Image): Image to mirror
+
+    Returns:
+        Image.Image: Mirrored image
+    """
     return img.transpose(Image.FLIP_LEFT_RIGHT)
 
 
 def grayscale_image(img: Image.Image) -> Image.Image:
+    """Applies a grayscale filter to the image
+
+    Args:
+        img (Image.Image): Image to apply grayscale to
+
+    Returns:
+        Image.Image: Grayscaled image
+    """
     return ImageOps.grayscale(img)
+
+def invert_image(img: Image.Image) -> Image.Image:
+    """Applies an inverted filter to the image
+
+    Args:
+        img (Image.Image): Image to apply invert to
+
+    Returns:
+        Image.Image: Inverted image
+    """
+    return ImageOps.invert(img)

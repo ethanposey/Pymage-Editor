@@ -5,10 +5,10 @@ A simple image editor made in Python using Tkinter and Pillow. This is a random 
 ---
 
 ### Features:
-- File Operations: Opening and Saving images.
-- Image Manipulation: Rotation, Resizing, Flipping, and Mirroring.
-- Image Effects: Blur, Contour, Detail, Edge Enhance, Emboss, Find Edges, Sharpen, Smooth.
-- Filters: Grayscale.
+- File Operations: Opening and Saving images
+- Image Manipulation: Rotation, Resizing, Flipping, and Mirroring
+- Image Effects: Blur, Contour, Detail, Edge Enhance, Emboss, Find Edges, Sharpen, Smooth
+- Filters: Grayscale, Invert
 - History: Includes a history window to show past image actions
     - Also allows for undoing and redoing
 - Image movement: Ability to drag image around the canvas
