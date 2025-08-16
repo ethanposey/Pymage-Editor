@@ -12,7 +12,8 @@ from image_processing.operations import (
     flip_image,
     mirror_image,
     invert_image,
-    sepia_image
+    sepia_image,
+    tint_image
 )
 
 from ui.widgets import TwoIntDialog, ImageCanvas, HistoryPanel
@@ -79,6 +80,7 @@ class ImageEditorApp(tk.Tk):
         filter_menu.add_command(label="Grayscale", command=self._grayscale)
         filter_menu.add_command(label="Invert", command=self._invert)
         filter_menu.add_command(label="Sepia", command=self._sepia)
+        filter_menu.add_command(label="Tint", command=self._tint)
 
     # -------- File ops --------
     def _open_image(self):
@@ -167,6 +169,12 @@ class ImageEditorApp(tk.Tk):
             self.img = sepia_image(self.img)
             self.canvas.show(self.img)
             self.history.push("Sepia", self.img)
+    
+    def _tint(self):
+        if self.img:
+            self.img = tint_image(self.img, "red")
+            self.canvas.show(self.img)
+            self.history.push("Tint", self.img)
 
     # -------- History integration --------
     def _load_history_state(self, _desc: str, img_copy):

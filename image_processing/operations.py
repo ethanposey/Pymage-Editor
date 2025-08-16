@@ -166,3 +166,15 @@ def sepia_image(img: Image.Image) -> Image.Image:
     sepia_array = np.clip(sepia_array, 0, 255).astype(np.uint8)
 
     return Image.fromarray(sepia_array)
+
+def tint_image(img: Image.Image, color: str) -> Image.Image:
+    """Add a specified tint to an image
+
+    Args:
+        img (Image.Image): Image to tint
+        color (str): Color to be used as tint
+
+    Returns:
+        Image.Image: Tinted image
+    """
+    return ImageOps.colorize(img.convert("L"), black="black", white=color)
