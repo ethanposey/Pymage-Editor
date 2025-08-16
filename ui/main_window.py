@@ -1,7 +1,6 @@
 import os
 import tkinter as tk
 from tkinter import filedialog as fd
-from pathlib import Path
 
 from image_processing.operations import (
     apply_effect,
@@ -19,11 +18,10 @@ from image_processing.operations import (
 
 from ui.widgets import TwoIntDialog, ImageCanvas, HistoryPanel
 
-
 class ImageEditorApp(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
-        self.iconbitmap("images/pixil-frame-0.ico") 
+        self.iconbitmap("images/app_icon.ico") 
         self.title("Pymage Editor")
         self.geometry("1920x1080")
         self.configure(bg="#1f1f1f")
@@ -91,8 +89,7 @@ class ImageEditorApp(tk.Tk):
         )
         if not file_path:
             return
-        global path
-        path = Path(file_path)
+        self.current_path = file_path
         self.img = open_img(file_path)
         self.canvas.show(self.img, at=(100, 100))
         self.history.reset()
@@ -101,7 +98,10 @@ class ImageEditorApp(tk.Tk):
     def _save_image(self):
         if not self.img:
             return
-        save_img(self.img, path)
+        target = getattr(self, "current_path", None)
+        if not target:
+            return self._save_image_as()
+        save_img(self.img, target)
 
     def _save_image_as(self):
         if not self.img:
